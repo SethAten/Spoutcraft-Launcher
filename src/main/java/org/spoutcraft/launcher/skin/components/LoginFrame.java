@@ -400,6 +400,7 @@ public abstract class LoginFrame extends JFrame implements DownloadListener {
 				+ "<br/>This launcher will continue to work for only a short time longer.</body></html>");
 
 		ep.addHyperlinkListener(new HyperlinkListener() {
+			@Override
 			public void hyperlinkUpdate(HyperlinkEvent e) {
 				if (e.getEventType().equals(HyperlinkEvent.EventType.ACTIVATED)) {
 					try {

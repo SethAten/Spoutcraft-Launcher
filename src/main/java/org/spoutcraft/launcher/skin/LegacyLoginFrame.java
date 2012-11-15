@@ -55,7 +55,6 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import org.spoutcraft.launcher.Settings;
-import org.spoutcraft.launcher.entrypoint.SpoutcraftLauncher;
 import org.spoutcraft.launcher.skin.components.HyperlinkJLabel;
 import org.spoutcraft.launcher.skin.components.LoginFrame;
 import org.spoutcraft.launcher.util.ImageUtils;
@@ -382,10 +381,12 @@ public class LegacyLoginFrame extends LoginFrame implements ActionListener, KeyL
 		forgetPlayer2.setEnabled(true);
 	}
 
+	@Override
 	public JProgressBar getProgressBar() {
 		return progressBar;
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		//Selected username from dropdown
 		if (e.getActionCommand().equals(USERNAME_ACTION)) {
@@ -459,9 +460,11 @@ public class LegacyLoginFrame extends LoginFrame implements ActionListener, KeyL
 		}
 	}
 
+	@Override
 	public void keyTyped(KeyEvent e) {
 	}
 
+	@Override
 	public void keyPressed(KeyEvent e) {
 		if (loginButton.isEnabled() && e.getKeyCode() == KeyEvent.VK_ENTER) {
 			disableForm();
@@ -469,6 +472,7 @@ public class LegacyLoginFrame extends LoginFrame implements ActionListener, KeyL
 		}
 	}
 
+	@Override
 	public void keyReleased(KeyEvent e) {
 	}
 
@@ -478,6 +482,7 @@ public class LegacyLoginFrame extends LoginFrame implements ActionListener, KeyL
 		super.dispose();
 	}
 
+	@Override
 	public void stateChanged(String status, float progress) {
 		int intProgress = Math.round(progress);
 

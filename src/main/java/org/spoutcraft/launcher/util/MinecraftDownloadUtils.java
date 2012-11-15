@@ -56,7 +56,7 @@ public class MinecraftDownloadUtils {
 				//String minecraftMD5 = MD5Utils.getMD5(FileType.MINECRAFT, build.getLatestMinecraftVersion());
 				String resultMD5 = MD5Utils.getMD5(download.getOutFile());
 				System.out.println("Expected MD5: " + minecraftMD5 + " Result MD5: " + resultMD5);
-				if (resultMD5.equals(minecraftMD5) || (minecraftMD5 == null && resultMD5 != null)) {
+				if (resultMD5.equals(minecraftMD5) || (minecraftMD5 == null)) {
 					//Patch Minecraft
 					if (!build.getLatestMinecraftVersion().equals(build.getMinecraftVersion())) {
 						File patch = new File(Utils.getWorkingDirectory(), "mc.patch");

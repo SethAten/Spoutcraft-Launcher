@@ -279,10 +279,12 @@ public class MinecraftClassLoader extends URLClassLoader {
 			this.iterator = iterator;
 		}
 
+		@Override
 		public boolean hasMoreElements() {
 			return iterator.hasNext();
 		}
 
+		@Override
 		public URL nextElement() {
 			return iterator.next();
 		}

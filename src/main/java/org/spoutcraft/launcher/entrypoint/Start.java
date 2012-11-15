@@ -177,6 +177,7 @@ public class Start {
 			this.screen = screen;
 		}
 
+		@Override
 		public void stateChanged(String text, float progress) {
 			screen.updateProgress((int)progress);
 		}

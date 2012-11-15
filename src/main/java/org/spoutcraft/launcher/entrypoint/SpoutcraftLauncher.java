@@ -317,6 +317,7 @@ public class SpoutcraftLauncher {
 		System.setErr(new PrintStream(new LoggerOutputStream(Level.SEVERE, logger), true));
 
 		Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+			@Override
 			public void uncaughtException(Thread t, Throwable e) {
 		    	logger.log(Level.SEVERE, "Unhandled Exception in " + t, e);
 			}

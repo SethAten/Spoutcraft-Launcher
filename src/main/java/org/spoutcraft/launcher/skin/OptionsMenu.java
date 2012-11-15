@@ -280,6 +280,7 @@ public class OptionsMenu extends JDialog implements ActionListener{
 		}
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent e) {
 		action(e.getActionCommand());
 	}
@@ -733,12 +734,15 @@ class DeveloperCodeListener implements DocumentListener {
 		this.field = field;
 	}
 
+	@Override
 	public void insertUpdate(DocumentEvent e) {
 	}
 
+	@Override
 	public void removeUpdate(DocumentEvent e) {
 	}
 
+	@Override
 	public void changedUpdate(DocumentEvent e) {
 	}
 }

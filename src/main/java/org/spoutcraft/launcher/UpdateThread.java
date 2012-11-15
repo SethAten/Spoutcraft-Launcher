@@ -574,6 +574,7 @@ public class UpdateThread extends Thread {
 
 	private class DownloadListenerWrapper implements DownloadListener {
 		private final AtomicReference<DownloadListener> wrapped = new AtomicReference<DownloadListener>(null);
+		@Override
 		public void stateChanged(String fileName, float progress) {
 			fileName = (new File(fileName)).getName();
 			DownloadListener listener = wrapped.get();

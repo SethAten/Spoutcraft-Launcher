@@ -48,10 +48,12 @@ public enum Resources implements YAMLResource {
 		this.resource = new BaseYAMLResource(url, directory, action);
 	}
 
+	@Override
 	public YAMLProcessor getYAML() {
 		return resource.getYAML();
 	}
 
+	@Override
 	public boolean updateYAML() {
 		return resource.updateYAML();
 	}

@@ -166,6 +166,7 @@ class MirrorComparator implements Comparator<String> {
 	public MirrorComparator(Map<String, Integer> mirrors) {
 		this.mirrors = mirrors;
 	}
+	@Override
 	public int compare(String o1, String o2) {
 		return getValue(o2) - getValue(o1);
 	}
