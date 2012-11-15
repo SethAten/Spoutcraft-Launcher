@@ -29,6 +29,8 @@ package org.spoutcraft.launcher.launch;
 import java.applet.Applet;
 import java.io.File;
 import java.util.List;
+
+import org.spoutcraft.launcher.api.Launcher;
 import org.spoutcraft.launcher.exceptions.CorruptedMinecraftJarException;
 import org.spoutcraft.launcher.exceptions.MinecraftVerifyException;
 import org.spoutcraft.launcher.exceptions.UnknownMinecraftException;
@@ -39,7 +41,7 @@ public class MinecraftLauncher {
 	private static MinecraftClassLoader loader = null;
 	public static MinecraftClassLoader getClassLoader(List<Library> libraries) {
 		if (loader == null) {
-			File mcBinFolder = new File(Utils.getWorkingDirectory(), "bin");
+			File mcBinFolder = Launcher.getGameUpdater().getBinDir();
 
 			File spoutcraftJar = new File(mcBinFolder, "spoutcraft.jar");
 			File minecraftJar = new File(mcBinFolder, "minecraft.jar");

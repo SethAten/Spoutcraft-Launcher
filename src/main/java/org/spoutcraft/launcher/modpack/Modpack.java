@@ -27,7 +27,7 @@
 package org.spoutcraft.launcher.modpack;
 
 public enum Modpack {
-	SPOUTCRAFT("spoutcraft"),
+	SPOUTCRAFT("spout"),
 	TECHNIC("technic"),
 	TEKKIT("tekkit");
 
