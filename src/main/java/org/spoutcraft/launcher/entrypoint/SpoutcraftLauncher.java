@@ -60,8 +60,9 @@ import org.spoutcraft.launcher.Settings;
 import org.spoutcraft.launcher.GameLauncher;
 import org.spoutcraft.launcher.StartupParameters;
 import org.spoutcraft.launcher.api.Launcher;
-import org.spoutcraft.launcher.api.SpoutcraftDirectories;
+import org.spoutcraft.launcher.api.Directories;
 import org.spoutcraft.launcher.exceptions.RestfulAPIException;
+import org.spoutcraft.launcher.modpack.Modpack;
 import org.spoutcraft.launcher.rest.SpoutcraftBuild;
 import org.spoutcraft.launcher.skin.ConsoleFrame;
 import org.spoutcraft.launcher.skin.ErrorDialog;
@@ -108,9 +109,8 @@ public class SpoutcraftLauncher {
 		params.logParameters(logger);
 
 		// Setup directories
-		SpoutcraftDirectories dirs = new SpoutcraftDirectories();
-		dirs.getSkinDir().mkdirs();
-		dirs.getSpoutcraftDir().mkdirs();
+		Directories.getSkinDir().mkdirs();
+		Directories.getConfigDir().mkdirs();
 
 		if (Settings.getYAML() == null) {
 			YAMLProcessor settings = setupSettings();
@@ -168,8 +168,8 @@ public class SpoutcraftLauncher {
 		}
 
 		try {
-			@SuppressWarnings("unused")
-			Launcher launcher = new Launcher(new GameUpdater(), new GameLauncher(), frame);
+			new Launcher(new GameUpdater(), new GameLauncher(), frame);
+			Launcher.getGameUpdater().setModpack(Modpack.SPOUTCRAFT);
 		} catch (IOException failure) {
 			failure.printStackTrace();
 			ErrorDialog dialog = new ErrorDialog(frame, failure);

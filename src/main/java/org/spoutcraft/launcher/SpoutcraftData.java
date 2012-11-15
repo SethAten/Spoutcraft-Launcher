@@ -42,7 +42,7 @@ import org.apache.commons.io.IOUtils;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.ObjectMapper;
 
-import org.spoutcraft.launcher.api.SpoutcraftDirectories;
+import org.spoutcraft.launcher.api.Launcher;
 import org.spoutcraft.launcher.exceptions.NoMirrorsAvailableException;
 import org.spoutcraft.launcher.exceptions.RestfulAPIException;
 import org.spoutcraft.launcher.rest.Library;
@@ -222,7 +222,7 @@ public final class SpoutcraftData {
 	 * @throws RestfulAPIException if the REST API could not be accessed
 	 */
 	private static String calculateInstall() throws RestfulAPIException {
-		File spoutcraft = new File((new SpoutcraftDirectories()).getBinDir(), "spoutcraft.jar");
+		File spoutcraft = new File(Launcher.getGameUpdater().getBinDir(), "spoutcraft.jar");
 		if (spoutcraft.exists()) {
 			String md5 = MD5Utils.getMD5(spoutcraft);
 			InputStream stream = null;

@@ -42,7 +42,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.spoutcraft.launcher.api.Launcher;
-import org.spoutcraft.launcher.api.SpoutcraftDirectories;
+import org.spoutcraft.launcher.api.Directories;
 import org.spoutcraft.launcher.exceptions.RestfulAPIException;
 import org.spoutcraft.launcher.exceptions.UnsupportedOSException;
 import org.spoutcraft.launcher.launch.MinecraftClassLoader;
@@ -205,10 +205,9 @@ public class UpdateThread extends Thread {
 	}
 
 	private void updateFiles() {
-		SpoutcraftDirectories dirs = new SpoutcraftDirectories();
 		File oldConfig = new File(Utils.getWorkingDirectory(), "spoutcraft");
 		if (oldConfig.exists() && oldConfig.isDirectory()) {
-			moveDirectory(oldConfig, dirs.getSpoutcraftDir());
+			moveDirectory(oldConfig, Directories.getConfigDir());
 			FileUtils.deleteQuietly(oldConfig);
 		}
 	}
@@ -227,7 +226,7 @@ public class UpdateThread extends Thread {
 	}
 
 	private void cleanTemp() {
-		SpoutcraftDirectories dirs = new SpoutcraftDirectories();
+		Directories dirs = Launcher.getGameUpdater();
 		File binDir = dirs.getBinDir();
 		for (File f : binDir.listFiles()) {
 			if (f.isDirectory()) {
@@ -306,7 +305,7 @@ public class UpdateThread extends Thread {
 		if (!Utils.getWorkingDirectory().exists()) {
 			return true;
 		}
-		if (!Launcher.getGameUpdater().getSpoutcraftDir().exists()) {
+		if (!Directories.getConfigDir().exists()) {
 			return true;
 		}
 
@@ -475,7 +474,7 @@ public class UpdateThread extends Thread {
 
 		Launcher.getGameUpdater().getUpdateDir().mkdirs();
 		Launcher.getGameUpdater().getBinCacheDir().mkdirs();
-		Launcher.getGameUpdater().getSpoutcraftDir().mkdirs();
+		Directories.getConfigDir().mkdirs();
 		File cacheDir = new File(Launcher.getGameUpdater().getBinDir(), "cache");
 		cacheDir.mkdir();
 

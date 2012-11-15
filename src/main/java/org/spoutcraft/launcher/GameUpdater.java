@@ -29,12 +29,13 @@ package org.spoutcraft.launcher;
 import java.io.IOException;
 
 import org.spoutcraft.launcher.api.Launcher;
-import org.spoutcraft.launcher.api.SpoutcraftDirectories;
+import org.spoutcraft.launcher.api.Directories;
 import org.spoutcraft.launcher.exceptions.RestfulAPIException;
 import org.spoutcraft.launcher.launch.MinecraftLauncher;
+import org.spoutcraft.launcher.modpack.Modpack;
 import org.spoutcraft.launcher.util.DownloadListener;
 
-public final class GameUpdater extends SpoutcraftDirectories{
+public final class GameUpdater extends Directories {
 	public static final String baseURL = "http://s3.amazonaws.com/MinecraftDownload/";
 	public static final String latestLWJGLURL = "http://get.spout.org/lib/lwjgl/";
 	public static final String spoutcraftMirrors = "http://get.spout.org/mirrors.yml";
@@ -51,10 +52,21 @@ public final class GameUpdater extends SpoutcraftDirectories{
 	private UpdateThread updateThread;
 
 	public GameUpdater() throws RestfulAPIException {
-		build = new SpoutcraftData();
-		updateThread = new UpdateThread(build, null);
 	}
 
+	@Override
+	public void setModpack(Modpack modpack) {
+		super.setModpack(modpack);
+
+		if (modpack.equals(Modpack.SPOUTCRAFT)) {
+			try {
+				build = new SpoutcraftData();
+				updateThread = new UpdateThread(build, null);
+			} catch (RestfulAPIException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	public SpoutcraftData getBuild() {
 		return build;
 	}
