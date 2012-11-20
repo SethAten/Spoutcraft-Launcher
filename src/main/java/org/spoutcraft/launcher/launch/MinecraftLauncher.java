@@ -35,7 +35,6 @@ import org.spoutcraft.launcher.exceptions.CorruptedMinecraftJarException;
 import org.spoutcraft.launcher.exceptions.MinecraftVerifyException;
 import org.spoutcraft.launcher.exceptions.UnknownMinecraftException;
 import org.spoutcraft.launcher.rest.Library;
-import org.spoutcraft.launcher.util.Utils;
 
 public class MinecraftLauncher {
 	private static MinecraftClassLoader loader = null;
@@ -79,7 +78,7 @@ public class MinecraftLauncher {
 
 	@SuppressWarnings("rawtypes")
 	public static Applet getMinecraftApplet(List<Library> libraries) throws CorruptedMinecraftJarException, MinecraftVerifyException {
-		File mcBinFolder = new File(Utils.getWorkingDirectory(), "bin");
+		File mcBinFolder = Launcher.getGameUpdater().getBinDir();
 
 		try {
 			ClassLoader classLoader = getClassLoader(libraries);
