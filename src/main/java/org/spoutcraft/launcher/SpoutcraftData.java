@@ -45,16 +45,16 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.spoutcraft.launcher.api.Launcher;
 import org.spoutcraft.launcher.exceptions.NoMirrorsAvailableException;
 import org.spoutcraft.launcher.exceptions.RestfulAPIException;
+import org.spoutcraft.launcher.modpack.Modpack;
 import org.spoutcraft.launcher.rest.Library;
 import org.spoutcraft.launcher.rest.MD5Result;
 import org.spoutcraft.launcher.rest.Project;
 import org.spoutcraft.launcher.rest.RestAPI;
-import org.spoutcraft.launcher.rest.Versions;
 import org.spoutcraft.launcher.util.MD5Utils;
 import org.spoutcraft.launcher.util.MirrorUtils;
 import org.spoutcraft.launcher.util.Utils;
 
-public final class SpoutcraftData {
+public final class SpoutcraftData extends Modpack {
 	private static final ObjectMapper mapper = new ObjectMapper();
 	private final String installedBuild;
 	private final String build;
@@ -73,45 +73,37 @@ public final class SpoutcraftData {
 		libs = Collections.unmodifiableList(calculateLibraries(build));
 	}
 
+	@Override
+	public String getName() {
+		return Modpack.SPOUTCRAFT;
+	}
+
+	@Override
 	public String getMD5() {
 		return hash;
 	}
 
+	@Override
 	public String getBuild() {
 		return build;
 	}
 
+	@Override
 	public String getInstalledBuild() {
 		return installedBuild;
 	}
 
+	@Override
 	public List<Library> getLibraries() {
 		return libs;
 	}
 
-	public String getMinecraftVersion() {
-		String selected = Settings.getMinecraftVersion();
-		if (selected.equals(Settings.DEFAULT_MINECRAFT_VERSION)) {
-			//TODO: fix
-			return "1.3.2";
-			//return getLatestMinecraftVersion();
-		} else {
-			return selected;
-		}
-	}
-
-	public String getLatestMinecraftVersion() {
-		return Versions.getLatestMinecraftVersion();
-	}
-
-	public String getMinecraftURL(String user) {
-		return "http://s3.amazonaws.com/MinecraftDownload/minecraft.jar?user=" + user + "&ticket=1";
-	}
-
+	@Override
 	public String getSpoutcraftURL() throws NoMirrorsAvailableException {
 		return RestAPI.getDownloadURL(build);
 	}
 
+	@Override
 	public String getPatchURL() {
 		String mirrorURL = "patch/minecraft_";
 		mirrorURL += getLatestMinecraftVersion();

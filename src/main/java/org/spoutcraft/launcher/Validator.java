@@ -30,6 +30,7 @@ import java.io.File;
 import java.util.List;
 import org.spoutcraft.launcher.api.Launcher;
 import org.spoutcraft.launcher.exceptions.RestfulAPIException;
+import org.spoutcraft.launcher.modpack.Modpack;
 import org.spoutcraft.launcher.rest.Library;
 import org.spoutcraft.launcher.util.FileType;
 import org.spoutcraft.launcher.util.MD5Utils;
@@ -38,7 +39,7 @@ public class Validator{
 	private boolean passed = false;
 	private boolean errors = false;
 
-	public void run(SpoutcraftData build) {
+	public void run(Modpack build) {
 		Launcher.getGameUpdater().setStartValidationTime(System.currentTimeMillis());
 		try {
 			errors = !validate(build);
@@ -54,7 +55,7 @@ public class Validator{
 	 * @return true on validation completion, false on failure
 	 * @throws RestfulAPIException 
 	 */
-	private boolean validate(SpoutcraftData build) throws RestfulAPIException {
+	private boolean validate(Modpack build) throws RestfulAPIException {
 		File minecraftJar = new File(Launcher.getGameUpdater().getBinDir(), "minecraft.jar");
 		if (minecraftJar.exists()) {
 			if (!compareMD5s(build, FileType.MINECRAFT, minecraftJar)) {
@@ -148,7 +149,7 @@ public class Validator{
 		return errors;
 	}
 
-	private boolean compareMD5s(SpoutcraftData build, FileType type, File file) {
+	private boolean compareMD5s(Modpack build, FileType type, File file) {
 		return compareMD5s(type, build.getMinecraftVersion(), file);
 	}
 
@@ -162,7 +163,7 @@ public class Validator{
 		return expected.equals(actual);
 	}
 
-	private boolean compareSpoutcraftMD5s(SpoutcraftData build, File file) {
+	private boolean compareSpoutcraftMD5s(Modpack build, File file) {
 		String expected = build.getMD5();
 		String actual = MD5Utils.getMD5(file);
 		debug("Checking MD5 of Spoutcraft. Expected MD5: " + expected + " | Actual MD5: " + actual);

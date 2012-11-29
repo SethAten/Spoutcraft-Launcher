@@ -47,7 +47,7 @@ public final class GameUpdater extends Directories {
 	private String minecraftSession = "";
 
 	private DownloadListener listener;
-	private SpoutcraftData build;
+	private Modpack build;
 	private long validationTime;
 	private UpdateThread updateThread;
 
@@ -58,16 +58,10 @@ public final class GameUpdater extends Directories {
 	public void setModpack(Modpack modpack) {
 		super.setModpack(modpack);
 
-		if (modpack.equals(Modpack.SPOUTCRAFT)) {
-			try {
-				build = new SpoutcraftData();
-				updateThread = new UpdateThread(build, null);
-			} catch (RestfulAPIException e) {
-				e.printStackTrace();
-			}
-		}
+		build = modpack;
+		updateThread = new UpdateThread(build, null);
 	}
-	public SpoutcraftData getBuild() {
+	public Modpack getBuild() {
 		return build;
 	}
 
@@ -84,7 +78,7 @@ public final class GameUpdater extends Directories {
 	}
 
 	public void onSpoutcraftBuildChange() {
-		SpoutcraftData prev = this.build;
+		Modpack prev = this.build;
 		try {
 			this.build = new SpoutcraftData();
 			if (!this.build.getBuild().equals(prev.getBuild())) {

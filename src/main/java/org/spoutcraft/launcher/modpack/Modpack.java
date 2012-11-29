@@ -26,18 +26,52 @@
  */
 package org.spoutcraft.launcher.modpack;
 
-public enum Modpack {
-	SPOUTCRAFT("spout"),
-	TECHNIC("technic"),
-	TEKKIT("tekkit");
+import java.util.List;
 
-	private String name;
+import org.spoutcraft.launcher.Settings;
+import org.spoutcraft.launcher.exceptions.NoMirrorsAvailableException;
+import org.spoutcraft.launcher.rest.Library;
+import org.spoutcraft.launcher.rest.Versions;
 
-	private Modpack(String name) {
-		this.name = name;
+public abstract class Modpack {
+	public static String VANILLA = "vanilla";
+	public static String SPOUTCRAFT = "spout";
+	public static String TECHNIC = "technic";
+	public static String TEKKIT = "tekkit";
+
+	protected String build;
+
+	public abstract String getName();
+
+	public abstract String getBuild();
+
+	public abstract List<Library> getLibraries();
+
+	public abstract String getMD5();
+
+	public abstract String getPatchURL();
+
+	public abstract String getSpoutcraftURL() throws NoMirrorsAvailableException;
+
+	public abstract String getInstalledBuild();
+
+	public String getMinecraftVersion() {
+		String selected = Settings.getMinecraftVersion();
+		if (selected.equals(Settings.DEFAULT_MINECRAFT_VERSION)) {
+			//TODO: fix
+			return "1.3.2";
+			//return getLatestMinecraftVersion();
+		} else {
+			return selected;
+		}
 	}
 
-	public String getName() {
-		return name;
+	public String getLatestMinecraftVersion() {
+		return Versions.getLatestMinecraftVersion();
 	}
+
+	public String getMinecraftURL(String user) {
+		return "http://s3.amazonaws.com/MinecraftDownload/minecraft.jar?user=" + user + "&ticket=1";
+	}
+
 }

@@ -47,6 +47,7 @@ import org.spoutcraft.launcher.exceptions.RestfulAPIException;
 import org.spoutcraft.launcher.exceptions.UnsupportedOSException;
 import org.spoutcraft.launcher.launch.MinecraftClassLoader;
 import org.spoutcraft.launcher.launch.MinecraftLauncher;
+import org.spoutcraft.launcher.modpack.Modpack;
 import org.spoutcraft.launcher.rest.Library;
 import org.spoutcraft.launcher.rest.Versions;
 import org.spoutcraft.launcher.util.Download;
@@ -85,8 +86,8 @@ public class UpdateThread extends Thread {
 	private final AtomicBoolean finished = new AtomicBoolean(false);
 	private final StartupParameters params = Utils.getStartupParameters();
 	private final DownloadListener listener = new DownloadListenerWrapper();
-	private final SpoutcraftData build;
-	public UpdateThread(SpoutcraftData build, DownloadListener listener) {
+	private final Modpack build;
+	public UpdateThread(Modpack build, DownloadListener listener) {
 		super("Update Thread");
 		setDaemon(true);
 		this.build = build;
@@ -301,7 +302,7 @@ public class UpdateThread extends Thread {
 		return valid.get();
 	}
 
-	public boolean isSpoutcraftUpdateAvailable(SpoutcraftData build) throws RestfulAPIException {
+	public boolean isSpoutcraftUpdateAvailable(Modpack build) throws RestfulAPIException {
 		if (!Utils.getWorkingDirectory().exists()) {
 			return true;
 		}
@@ -336,7 +337,7 @@ public class UpdateThread extends Thread {
 		return false;
 	}
 
-	public boolean isMinecraftUpdateAvailable(SpoutcraftData build) {
+	public boolean isMinecraftUpdateAvailable(Modpack build) {
 		int steps = 7;
 		if (!Launcher.getGameUpdater().getBinDir().exists()) {
 			return true;
@@ -377,7 +378,7 @@ public class UpdateThread extends Thread {
 		return installed == null || !installed.equals(required);
 	}
 
-	public void updateMinecraft(SpoutcraftData build) throws IOException {
+	public void updateMinecraft(Modpack build) throws IOException {
 		Launcher.getGameUpdater().getBinDir().mkdir();
 		Launcher.getGameUpdater().getBinCacheDir().mkdir();
 		if (Launcher.getGameUpdater().getUpdateDir().exists()) {
@@ -469,7 +470,7 @@ public class UpdateThread extends Thread {
 		FileUtils.moveDirectory(tempNatives, new File(Launcher.getGameUpdater().getBinDir(), "natives"));
 	}
 
-	public void updateSpoutcraft(SpoutcraftData build) throws IOException {
+	public void updateSpoutcraft(Modpack build) throws IOException {
 		cleanupBinFoldersFor(build);
 
 		Launcher.getGameUpdater().getUpdateDir().mkdirs();
@@ -536,7 +537,7 @@ public class UpdateThread extends Thread {
 		}
 	}
 
-	public void cleanupBinFoldersFor(SpoutcraftData build) {
+	public void cleanupBinFoldersFor(Modpack build) {
 		try {
 			if (!Launcher.getGameUpdater().getBinDir().exists()) {
 				return;

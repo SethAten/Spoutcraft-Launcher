@@ -29,12 +29,12 @@ package org.spoutcraft.launcher.util;
 import java.io.File;
 import java.io.IOException;
 import org.spoutcraft.diff.JBPatch;
-import org.spoutcraft.launcher.SpoutcraftData;
 import org.spoutcraft.launcher.api.Launcher;
+import org.spoutcraft.launcher.modpack.Modpack;
 import org.spoutcraft.launcher.util.Download.Result;
 
 public class MinecraftDownloadUtils {
-	public static void downloadMinecraft(String user, String output, SpoutcraftData build, DownloadListener listener) throws IOException {
+	public static void downloadMinecraft(String user, String output, Modpack build, DownloadListener listener) throws IOException {
 		int tries = 3;
 		File outputFile = null;
 		while (tries > 0) {

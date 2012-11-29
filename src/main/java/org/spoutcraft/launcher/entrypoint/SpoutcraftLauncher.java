@@ -58,11 +58,11 @@ import org.spoutcraft.launcher.Main;
 import org.spoutcraft.launcher.Proxy;
 import org.spoutcraft.launcher.Settings;
 import org.spoutcraft.launcher.GameLauncher;
+import org.spoutcraft.launcher.SpoutcraftData;
 import org.spoutcraft.launcher.StartupParameters;
 import org.spoutcraft.launcher.api.Launcher;
 import org.spoutcraft.launcher.api.Directories;
 import org.spoutcraft.launcher.exceptions.RestfulAPIException;
-import org.spoutcraft.launcher.modpack.Modpack;
 import org.spoutcraft.launcher.rest.SpoutcraftBuild;
 import org.spoutcraft.launcher.skin.ConsoleFrame;
 import org.spoutcraft.launcher.skin.ErrorDialog;
@@ -169,7 +169,7 @@ public class SpoutcraftLauncher {
 
 		try {
 			new Launcher(new GameUpdater(), new GameLauncher(), frame);
-			Launcher.getGameUpdater().setModpack(Modpack.SPOUTCRAFT);
+			Launcher.getGameUpdater().setModpack(new SpoutcraftData());
 		} catch (IOException failure) {
 			failure.printStackTrace();
 			ErrorDialog dialog = new ErrorDialog(frame, failure);
