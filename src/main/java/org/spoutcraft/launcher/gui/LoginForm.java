@@ -679,9 +679,11 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 					this.cancel(true);
 					progressBar.setVisible(false);
 				} catch (MinecraftUserNotPremiumException e) {
-					JOptionPane.showMessageDialog(getParent(), "You purchase a minecraft account to play");
-					this.cancel(true);
-					progressBar.setVisible(false);
+					values = new String[] { "0", "0", user, "0" };
+					return true;
+					//JOptionPane.showMessageDialog(getParent(), "You purchase a minecraft account to play");
+					//this.cancel(true);
+					//progressBar.setVisible(false);
 				} catch (MCNetworkException e) {
 					UserPasswordInformation info = null;
 
