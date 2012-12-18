@@ -369,7 +369,7 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 		if (SettingsUtil.getModPackSelection() != null) {
 			updateBranding();
 		} else {
-			setTitle("Technic Launcher - No Modpack Selected");
+			setTitle("SA90 Launcher - No Modpack Selected");
 		}
 	}
 
@@ -396,7 +396,7 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 				loginButton.setEnabled(true);
 				optionsButton.setEnabled(true);
 				setIconImage(Toolkit.getDefaultToolkit().getImage(ModPackYML.getModPackIcon()));
-				setTitle(String.format("Technic Launcher - %s - (%s)", Main.build, ModPackListYML.currentModPackLabel));
+				setTitle(String.format("SA90 Launcher - %s - (%s)", Main.build, ModPackListYML.currentModPackLabel));
 				options.reloadSettings();
 				MinecraftYML.updateMinecraftYMLCache();
 				setModLoaderEnabled();
@@ -518,13 +518,13 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 								if (!Main.isOffline) {
 									loginSkin1.setText(user);
 									loginSkin1.setVisible(true);
-									ImageUtils.drawCharacter(contentPane, this, "http://s3.amazonaws.com/MinecraftSkins/" + skinName + ".png", 103, 170, loginSkin1Image);
+									ImageUtils.drawCharacter(contentPane, this, "http://localhost/MinecraftSkins/" + skinName + ".png", 103, 170, loginSkin1Image);
 								}
 							} else if (i == 2) {
 								if (!Main.isOffline) {
 									loginSkin2.setText(user);
 									loginSkin2.setVisible(true);
-									ImageUtils.drawCharacter(contentPane, this, "http://s3.amazonaws.com/MinecraftSkins/" + skinName + ".png", 293, 170, loginSkin2Image);
+									ImageUtils.drawCharacter(contentPane, this, "http://localhost/MinecraftSkins/" + skinName + ".png", 293, 170, loginSkin2Image);
 								}
 							}
 						}
