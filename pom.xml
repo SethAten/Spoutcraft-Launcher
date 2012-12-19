@@ -11,7 +11,7 @@
 	<!-- Project information -->
 	<groupId>org.spoutcraft</groupId>
 	<artifactId>sa90-launcher</artifactId>
-	<version>1.0.3.4</version>
+	<version>1.0.3.4DEV</version>
 	<name>SA90 Launcher</name>
 	<url>https://github.com/SethAten/Spoutcraft-Launcher</url>
 	<description></description>

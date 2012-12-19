@@ -230,7 +230,7 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 		purchaseAccount.setFont(new Font("Arial", Font.PLAIN, 11));
 		purchaseAccount.setForeground(new Color(0, 0, 255));
 
-		JLabel wikiLink = new HyperlinkJLabel("<html><u>Technic WebSite</u></html>", "http://technicpack.net/");
+		JLabel wikiLink = new HyperlinkJLabel("<html><u>SA90 WebSite</u></html>", "http://sa90.cu.cc/");
 		wikiLink.setHorizontalAlignment(SwingConstants.RIGHT);
 		wikiLink.setBounds(233, 85, 109, 14);
 
@@ -518,13 +518,13 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 								if (!Main.isOffline) {
 									loginSkin1.setText(user);
 									loginSkin1.setVisible(true);
-									ImageUtils.drawCharacter(contentPane, this, "http://localhost/MinecraftSkins/" + skinName + ".png", 103, 170, loginSkin1Image);
+									ImageUtils.drawCharacter(contentPane, this, "http://mc.sa90.cu.cc/MinecraftSkins/" + skinName + ".png", 103, 170, loginSkin1Image);
 								}
 							} else if (i == 2) {
 								if (!Main.isOffline) {
 									loginSkin2.setText(user);
 									loginSkin2.setVisible(true);
-									ImageUtils.drawCharacter(contentPane, this, "http://localhost/MinecraftSkins/" + skinName + ".png", 293, 170, loginSkin2Image);
+									ImageUtils.drawCharacter(contentPane, this, "http://mc.sa90.cu.cc/MinecraftSkins/" + skinName + ".png", 293, 170, loginSkin2Image);
 								}
 							}
 						}
@@ -945,7 +945,7 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 	@Override
 	public void windowClosed(WindowEvent e) {
 		if (success == LauncherFrame.ERROR_IN_LAUNCH) {
-			Util.log("Exiting the Technic Launcher");
+			Util.log("Exiting the SA90 Launcher");
 			System.exit(0);
 		}
 	}

@@ -83,7 +83,7 @@ public class OptionDialog extends JDialog implements ActionListener {
 		buildInfo.setText("SA90 Launcher Build " + Main.build);
 		buildInfo.setOpaque(true);
 		buildInfo.setForeground(Color.DARK_GRAY);
-		buildInfo.setToolTipText("Created by the Spout Development Team and Modified by the Technic Team. Licensed under the LGPL. Source code is available at www.github.com/SpoutDev");
+		buildInfo.setToolTipText("Created by the Spout Development Team and Modified by the Technic Team Then by Seth Aten. Licensed under the LGPL. Source code is available at www.github.com/SpoutDev");
 
 		customBuilds.setToolTipText("Only use if you know what you are doing!");
 		devBuilds.setToolTipText("Development builds are often unstable and buggy. Use at your own risk!");
