@@ -518,13 +518,13 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 								if (!Main.isOffline) {
 									loginSkin1.setText(user);
 									loginSkin1.setVisible(true);
-									ImageUtils.drawCharacter(contentPane, this, "http://mc.sa90.cu.cc/MinecraftSkins/" + skinName + ".png", 103, 170, loginSkin1Image);
+									ImageUtils.drawCharacter(contentPane, this, "http://s3.amazonaws.com/MinecraftSkins/" + skinName + ".png", 103, 170, loginSkin1Image);
 								}
 							} else if (i == 2) {
 								if (!Main.isOffline) {
 									loginSkin2.setText(user);
 									loginSkin2.setVisible(true);
-									ImageUtils.drawCharacter(contentPane, this, "http://mc.sa90.cu.cc/MinecraftSkins/" + skinName + ".png", 293, 170, loginSkin2Image);
+									ImageUtils.drawCharacter(contentPane, this, "http://s3.amazonaws.com/MinecraftSkins/" + skinName + ".png", 293, 170, loginSkin2Image);
 								}
 							}
 						}
@@ -679,11 +679,9 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 					this.cancel(true);
 					progressBar.setVisible(false);
 				} catch (MinecraftUserNotPremiumException e) {
-					values = new String[] { "0", "0", user, "0" };
-					return true;
-					//JOptionPane.showMessageDialog(getParent(), "You purchase a minecraft account to play");
-					//this.cancel(true);
-					//progressBar.setVisible(false);
+					JOptionPane.showMessageDialog(getParent(), "You purchase a minecraft account to play");
+					this.cancel(true);
+					progressBar.setVisible(false);
 				} catch (MCNetworkException e) {
 					UserPasswordInformation info = null;
 
