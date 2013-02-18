@@ -10,9 +10,9 @@
 
 	<!-- Project information -->
 	<groupId>org.spoutcraft</groupId>
-	<artifactId>sa90-launcher</artifactId>
-	<version>1.0.3.4DEV</version>
-	<name>SA90 Launcher</name>
+	<artifactId>creeperlauncher</artifactId>
+	<version>1.0.3.5DEV</version>
+	<name>CreeperLauncher</name>
 	<url>https://github.com/SethAten/Spoutcraft-Launcher</url>
 	<description></description>
 

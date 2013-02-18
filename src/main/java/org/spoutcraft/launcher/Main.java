@@ -79,7 +79,7 @@ public class Main {
 			params.addAll(Arrays.asList(args_temp));
 
 			if (PlatformUtils.getPlatform() == PlatformUtils.OS.macos) {
-				params.add("-Xdock:name=\"SA90 Launcher\"");
+				params.add("-Xdock:name=\"CreeperLauncher\"");
 
 				try {
 					File icon = new File(PlatformUtils.getWorkingDirectory(), "launcher_icon.icns");
@@ -152,7 +152,7 @@ public class Main {
 		if (PlatformUtils.getPlatform() == PlatformUtils.OS.macos) {
 			try {
 				System.setProperty("apple.laf.useScreenMenuBar", "true");
-				System.setProperty("com.apple.mrj.application.apple.menu.about.name", "SA90 Launcher");
+				System.setProperty("com.apple.mrj.application.apple.menu.about.name", "CreeperLauncher");
 				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			} catch (Exception ignore) {
 			}

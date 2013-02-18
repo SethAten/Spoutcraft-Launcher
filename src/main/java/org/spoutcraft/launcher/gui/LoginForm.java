@@ -230,7 +230,7 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 		purchaseAccount.setFont(new Font("Arial", Font.PLAIN, 11));
 		purchaseAccount.setForeground(new Color(0, 0, 255));
 
-		JLabel wikiLink = new HyperlinkJLabel("<html><u>SA90 WebSite</u></html>", "http://sa90.cu.cc/");
+		JLabel wikiLink = new HyperlinkJLabel("<html><u>The WebSite</u></html>", "http://mc.sa90.cu.cc/");
 		wikiLink.setHorizontalAlignment(SwingConstants.RIGHT);
 		wikiLink.setBounds(233, 85, 109, 14);
 
@@ -369,7 +369,7 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 		if (SettingsUtil.getModPackSelection() != null) {
 			updateBranding();
 		} else {
-			setTitle("SA90 Launcher - No Modpack Selected");
+			setTitle("CreeperLauncher - No Modpack Selected");
 		}
 	}
 
@@ -396,7 +396,7 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 				loginButton.setEnabled(true);
 				optionsButton.setEnabled(true);
 				setIconImage(Toolkit.getDefaultToolkit().getImage(ModPackYML.getModPackIcon()));
-				setTitle(String.format("SA90 Launcher - %s - (%s)", Main.build, ModPackListYML.currentModPackLabel));
+				setTitle(String.format("CreeperLauncher - %s - (%s)", Main.build, ModPackListYML.currentModPackLabel));
 				options.reloadSettings();
 				MinecraftYML.updateMinecraftYMLCache();
 				setModLoaderEnabled();
@@ -943,7 +943,7 @@ public class LoginForm extends JFrame implements ActionListener, DownloadListene
 	@Override
 	public void windowClosed(WindowEvent e) {
 		if (success == LauncherFrame.ERROR_IN_LAUNCH) {
-			Util.log("Exiting the SA90 Launcher");
+			Util.log("Exiting the CreeperLauncher");
 			System.exit(0);
 		}
 	}

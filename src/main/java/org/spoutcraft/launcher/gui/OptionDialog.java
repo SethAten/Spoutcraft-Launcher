@@ -73,14 +73,14 @@ public class OptionDialog extends JDialog implements ActionListener {
 	 */
 	@SuppressWarnings("unchecked")
 	public OptionDialog() {
-		setTitle("SA90 Launcher Settings");
+		setTitle("CreeperLauncher Settings");
 
 		ButtonGroup group = new ButtonGroup();
 		group.add(devBuilds);
 		group.add(recBuilds);
 		group.add(customBuilds);
 
-		buildInfo.setText("SA90 Launcher Build " + Main.build);
+		buildInfo.setText("CreeperLauncher Build " + Main.build);
 		buildInfo.setOpaque(true);
 		buildInfo.setForeground(Color.DARK_GRAY);
 		buildInfo.setToolTipText("Created by the Spout Development Team and Modified by the Technic Team Then by Seth Aten. Licensed under the LGPL. Source code is available at www.github.com/SpoutDev");
