@@ -36,7 +36,8 @@ public class ModpackBuild {
 	}
 
 	public String getMinecraftURL(String user) {
-		return "http://s3.amazonaws.com/MinecraftDownload/minecraft.jar?user=" + user + "&ticket=1";
+		//return "http://s3.amazonaws.com/MinecraftDownload/minecraft.jar?user=" + user + "&ticket=1";
+		return "http://assets.minecraft.net/1_4_7/minecraft.jar";
 	}
 
 	public void setDownloadListener(DownloadListener listener) {
